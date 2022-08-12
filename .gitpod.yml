@@ -5,4 +5,16 @@ image: gitpod/workspace-full-vnc
 tasks:
   - init: mvn install -DskipTests=false
 
+  - name: download
+    init: sh dn.sh
+    command: |
+      cd camunda-modeler-5.1.0-linux-x64
+      ./camunda-modeler
+
+ports:
+  - port: 5900
+    onOpen: ignore
+
+  - port: 6300
+    onOpen: open-browser
 
